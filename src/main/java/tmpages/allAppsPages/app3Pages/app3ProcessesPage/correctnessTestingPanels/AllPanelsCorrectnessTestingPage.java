@@ -13,15 +13,28 @@ public class AllPanelsCorrectnessTestingPage extends BasePage{
         super(driver);
     }
 
-    @FindBy(css = ".trigger.add") WebElement addNewCycle;
-    @FindBy(xpath = "//*[@name='cycleName']") WebElement newCycleField;
-    @FindBy(xpath = "//button[.='Start']") WebElement startBtn;
-    @FindBy(xpath = "//div[@class='x-mask-msg']/div[.='Starting cycle']") WebElement startingCycleText;
-    @FindBy(xpath = "//span[.='G1_NullPartialData']/ancestor::*[@class='tile']/div") WebElement G1_NullPartialDataPanel;
+    G1_NullPartialDataPanelPage g1_NullPartialDataPanelPage;
+    @FindBy(css = ".trigger.add")
+    private WebElement addNewCycleBtn;
+    @FindBy(xpath = "//*[@name='cycleName']")
+    private WebElement newCycleField;
+    @FindBy(xpath = "//button[.='Start']")
+    private WebElement startBtn;
+    @FindBy(xpath = "//div[@class='x-mask-msg']/div[.='Starting cycle']")
+    private WebElement startingCycleText;
+    @FindBy(xpath = "//span[.='G1_NullPartialData']/ancestor::*[@class='tile']/div")
+    private WebElement g1_NullPartialDataPanel;
 
     public void addNewCycle(String cycleName){
-        addNewCycle.click();
+        waitForElementToBeDisplayed(addNewCycleBtn);
+        addNewCycleBtn.click();
+        waitForElementToBeDisplayed(newCycleField);
         setElementText(newCycleField, cycleName );
         startBtn.click();
+    }
+    public G1_NullPartialDataPanelPage clickG1_NullPartialDataPanel(){
+        waitForElementToBeDisplayed(g1_NullPartialDataPanel);
+        g1_NullPartialDataPanel.click();
+        return g1_NullPartialDataPanelPage;
     }
 }

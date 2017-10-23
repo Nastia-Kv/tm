@@ -11,7 +11,8 @@ public class BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void baseSetup() {
-        System.setProperty("webdriver.chrome.driver", "/Users/nastia/IdeaProjects/tm/src/main/resources/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "/Users/nastia/IdeaProjects/tm/src/main/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\akvas\\IdeaProjects\\tm\\src\\main\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

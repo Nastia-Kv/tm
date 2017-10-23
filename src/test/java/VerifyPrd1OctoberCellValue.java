@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import tmpages.AllAppsPage;
@@ -26,8 +27,15 @@ public class VerifyPrd1OctoberCellValue extends BaseTest {
     }
 
     @Test
-    public void cellValueValidation(){
+    public void cellValueValidation() throws InterruptedException {
         signInPage.loadPage();
-
+        signInPage.signInSuccessfully("tidemark.automation+reference.admin@gmail.com", "Password1" );
+        allAppsPage.clickApp3();
+        app3ProcessesPage.clickCorrectnessTestingProcess();
+        allPanelsCorrectnessTestingPage.addNewCycle("Test cycle name");
+        allPanelsCorrectnessTestingPage.clickG1_NullPartialDataPanel();
+        String cellValue = g1_nullPartialDataPanelPage.getPrd1OctoberCellValue();
+        Assert.assertEquals(cellValue, "$70.2");
+        System.out.println(cellValue);
     }
 }

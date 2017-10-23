@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 public class SignInPage extends BasePage{
     public SignInPage(WebDriver driver) {
         super(driver);
-        this.pageUrl = "qe5b.usw1.aws.tidemark.net/reference/";
+        this.pageUrl = "https://qe5b.usw1.aws.tidemark.net/reference/login";
         this.pageTitle = "Sign In";
     }
     @FindBy(name = "userName") WebElement userNameFld;
@@ -18,11 +18,10 @@ public class SignInPage extends BasePage{
     @FindBy(css = "span.normal") WebElement signInBtn;
     //tidemark.automation+reference.admin@gmail.com
 
-    public void loadSigninPage(){
-        loadPage();
-    }
     public void signInSuccessfully(String username, String password){
+        waitForElementToBeDisplayed(userNameFld);
         setElementText(userNameFld, username);
+        waitForElementToBeDisplayed(passwordFld);
         setElementText(passwordFld, password);
         signInBtn.click();
     }
