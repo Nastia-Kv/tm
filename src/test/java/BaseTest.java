@@ -20,5 +20,6 @@ public class BaseTest {
     @AfterClass(alwaysRun = true)
     public void teardown() {
         driver.quit();
+        System.out.println("After class");
     }
 }
