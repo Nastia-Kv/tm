@@ -15,8 +15,11 @@ public class GridPage extends BasePage {
     private WebElement prd1OctoberCellValue;
 
     public String getPrd1OctoberCellValue(){
+        System.out.println("Waiting for cell");
         waitForElementToBeDisplayed(prd1OctoberCellValue);
+        System.out.println("getting text");
         String text = prd1OctoberCellValue.getText();
+        System.out.println("returning text");
         return text;
     }
 }

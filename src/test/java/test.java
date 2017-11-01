@@ -16,6 +16,7 @@ public class test extends BaseTest {
         allProcessesPage = new AllProcessesPage(driver);
         allPanelsPage = new AllPanelsPage(driver);
         gridPage = new GridPage(driver);
+        System.out.println("123");
     }
 
     @Test
@@ -25,17 +26,13 @@ public class test extends BaseTest {
         System.out.println(22);
         signInPage.signInSuccessfully("tidemark.automation+reference.admin@gmail.com", "Password1");
         System.out.println(33);
-
         allAppsPage.openApp("app3 Test GridView");
-
         System.out.println(44);
         allProcessesPage.openProcess("Correctness Testing");
         System.out.println(55);
         allPanelsPage.addNewCycle("2");
         System.out.println(66);
-        Thread.sleep(10000);
-        allPanelsPage.openPanel("G1_NullPartialData");
-        Thread.sleep(10000);
+        allPanelsPage.openPanel();
         System.out.println(77);
         gridPage.getPrd1OctoberCellValue();
         System.out.println(88);

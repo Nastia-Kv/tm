@@ -21,7 +21,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        webDriverWait = new WebDriverWait(driver, 15);
+        webDriverWait = new WebDriverWait(driver, 30);
     }
 
     @FindBy(css = ".loading-mask")

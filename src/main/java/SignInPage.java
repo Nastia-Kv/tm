@@ -14,18 +14,20 @@ public class SignInPage extends BasePage {
         this.pageTitle = "Sign In";
     }
 
-    AllAppsPage allAppsPage1;
+    AllAppsPage allAppsPage1 = new AllAppsPage(driver);
     @FindBy(name = "userName") WebElement userNameFld;
     @FindBy(name = "password") WebElement passwordFld;
     @FindBy(css = "span.normal") WebElement signInBtn;
     //tidemark.automation+reference.admin@gmail.com
 
-    public void signInSuccessfully(String username, String password){
+    public AllAppsPage signInSuccessfully(String username, String password){
         waitForElementToBeDisplayed(userNameFld);
         setElementText(userNameFld, username);
         waitForElementToBeDisplayed(passwordFld);
         setElementText(passwordFld, password);
         signInBtn.click();
+
+        return allAppsPage1;
 
     }
 

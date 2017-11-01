@@ -20,8 +20,11 @@ public class AllPanelsPage extends BasePage {
     private WebElement startBtn;
     @FindBy(xpath = "//div[@class='x-mask-msg']/div[.='Starting cycle']")
     private WebElement startingCycleText;
-    @FindBy(css = ".children-container:nth-of-type(3) div.tile>div")
-    private List<WebElement> panelsTileBox;
+//    @FindBy(css = ".children-container:nth-of-type(3) div.tile>div")
+//    private List<WebElement> panelsTileBox;
+
+    @FindBy(xpath = "//span[.='G1_NullPartialData']/ancestor::*[@class='tile']/div")
+    private WebElement g1_NullPartialDataPanel;
 
     public void addNewCycle(String cycleName) {
         waitForElementToBeDisplayed(addNewCycleBtn);
@@ -31,15 +34,10 @@ public class AllPanelsPage extends BasePage {
         startBtn.click();
     }
 
-    public GridPage openPanel(String panelName) {
+    public GridPage openPanel(){
         waitForElementToDisappear(startingCycleText);
-        waitForListElementToBeDisplayed(panelsTileBox);
-        for (WebElement element : panelsTileBox) {
-            String tileText = element.findElement(By.cssSelector("span")).getText();
-            if (tileText.equals(panelName)) {
-                element.click();
-            }
-        }
+        waitForListElementToBeDisplayed(driver.findElements(By.cssSelector(".children-container:nth-of-type(3) div.tile>div span")));
+        g1_NullPartialDataPanel.click();
         return gridPage;
     }
 
